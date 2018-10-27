@@ -1,2 +1,8 @@
 .vagrant/*
 *.log
+
+code/*
+!code/index.php
+
+/config/*
+  1 !/config/example.server.conf
