@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
      sudo chmod +x /usr/local/bin/docker-compose
    SHELL
 
-   config.vm.provision "shell", run: "always", inline: <<-SHELL
-     docker-compose -f /vagrant/docker-compose.yml up
-   SHELL
+   # config.vm.provision "shell", run: "always", inline: <<-SHELL
+     # docker-compose -f /vagrant/docker-compose.yml up
+   # SHELL
 end
