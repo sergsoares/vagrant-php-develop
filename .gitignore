@@ -6,3 +6,5 @@ projects/*
 
 /config/*
   1 !/config/example.server.conf
+
+*.box
