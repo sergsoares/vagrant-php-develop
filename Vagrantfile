@@ -6,6 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
 
   config.vm.synced_folder "projects/", "/projects"
+  config.vm.synced_folder "containers", "/containers"
 
   config.vm.network "forwarded_port", host: 8080 ,guest: 8080
   config.vm.network "forwarded_port", host: 3306, guest: 3306 
