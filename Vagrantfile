@@ -8,15 +8,15 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "projects/", "/projects"
   config.vm.synced_folder "containers", "/containers"
 
-  config.vm.network "forwarded_port", host: 8080 ,guest: 8080
-  config.vm.network "forwarded_port", host: 3306, guest: 3306 
-  config.vm.network "forwarded_port", host: 6379 ,guest: 6379 
-  config.vm.network "forwarded_port", host: 27017 ,guest: 27017 
-  config.vm.network "forwarded_port", host: 27017 ,guest: 27017 
-  config.vm.network "forwarded_port", host: 9200 ,guest: 9200 
+  config.vm.network "forwarded_port", host: 8080 ,guest: 8080 # Nginx Port
+  config.vm.network "forwarded_port", host: 3306, guest: 3306 # Mysql Port
+  config.vm.network "forwarded_port", host: 6379 ,guest: 6379 # Redis Port 
+  config.vm.network "forwarded_port", host: 27017 ,guest: 27017 # Mongo Port 
+  config.vm.network "forwarded_port", host: 9200 ,guest: 9200 # Elasticsearch Port
+  config.vm.network "forwarded_port", host: 9300 ,guest: 9300 # Kibana Port
 
   config.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024"
+      vb.memory = "2048"
   end
 
    config.vm.provision "shell", inline: <<-SHELL

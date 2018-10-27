@@ -1,13 +1,41 @@
-web: 
-  image: nginx:latest
-  ports:
-    - "8080:80"
-  volumes:
-    - ../projects:/projects
-    - ./nginx-conf:/etc/nginx/conf.d
-  links:
-    - php
-php:
-  image: php:7-fpm
-  volumes:
-    - ../projects:/projects
+version: "2"
+services:
+  nginx: 
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ../projects:/projects
+      - ./nginx-conf:/etc/nginx/conf.d
+
+  php:
+    image: php:7-fpm
+    volumes:
+      - ../projects:/projects
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.2 
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: "single-node"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    restart: always
